@@ -42,7 +42,7 @@
         </javaClientGenerator>
         
         <!-- 要生成哪些表 -->
-        <table tableName="user_t" domainObjectName="usertmariadb"
+        <table tableName="user_t" domainObjectName="user_t_model_mariadb"
             enableCountByExample="false" enableUpdateByExample="false"
             enableDeleteByExample="false" enableSelectByExample="false"
             selectByExampleQueryId="false"></table>
