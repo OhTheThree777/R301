@@ -52,11 +52,11 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  ">
     </bean>  
   
     <!-- myBatis文件 -->  
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
-        <property name="dataSource" ref="dataSource" />  
-        <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->  
-        <property name="mapperLocations" value="classpath:edu/imnu/test301/mapping/*.xml" />  
-    </bean>  
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
+        <!--<property name="dataSource" ref="dataSource" />  -->
+        <!--&lt;!&ndash; 自动扫描entity目录, 省掉Configuration.xml里的手工配置 &ndash;&gt;  -->
+        <!--<property name="mapperLocations" value="classpath:edu/imnu/test301/mapping/*.xml" />  -->
+    <!--</bean>  -->
   
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="edu.imnu.301test.dao" />  
@@ -66,7 +66,26 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  ">
     <!-- 配置事务管理器 -->  
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
         <property name="dataSource" ref="dataSource" />  
-    </bean>  
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:mapper/*.xml</value>
+            </array>
+        </property>
+        <property name="typeAliasesPackage" value="com.isea533.mybatis.model"/>
+        <property name="plugins">
+            <array>
+                <!-- 主要看这里 -->
+                <bean class="com.isea533.mybatis.mapperhelper.MapperInterceptor"/>
+            </array>
+        </property>
+    </bean>
+
+
   
     <!-- 注解方式配置事物 -->  
     <!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->  

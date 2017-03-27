@@ -43,8 +43,8 @@
         
         <!-- 要生成哪些表 -->
         <table tableName="user_t" domainObjectName="user_t_model_mariadb"
-            enableCountByExample="false" enableUpdateByExample="false"
-            enableDeleteByExample="false" enableSelectByExample="false"
-            selectByExampleQueryId="false"></table>
+            enableCountByExample="true" enableUpdateByExample="true"
+            enableDeleteByExample="true" enableSelectByExample="true"
+            selectByExampleQueryId="true"></table>
     </context>
 </generatorConfiguration>
