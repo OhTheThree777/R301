@@ -34,9 +34,7 @@ public class usercontroller {
 
         String username = request.getParameter("username");
         String passwd = request.getParameter("passwd");
-        Example
-
-         example = new Example(user_t_model_mariadbMapper.class);
+        Example example = new Example(user_t_model_mariadbMapper.class);
         Criteria cri= example.createCriteria();
         cri.andEqualTo("username", usert.getUserName());
         userMapper.selectByExample(cri).toString();
