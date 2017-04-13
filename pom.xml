@@ -69,12 +69,18 @@
             <artifactId>mybatis-generator-core</artifactId>
             <version>1.3.2</version>
           </dependency>
+          <!--<dependency>-->
+            <!--<groupId>org.apache.tomcat.embed</groupId>-->
+            <!--<artifactId>tomcat-embed-core</artifactId>-->
+            <!--<version>7.0.59</version>-->
+          <!--</dependency>-->
         </dependencies>
       </plugin>
+
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
-        <version>6.1.7</version>
+        <version>6.1.10</version>
         <configuration>
           <connectors>
             <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">

@@ -3,6 +3,7 @@ package edu.imnu.controller;
 import edu.imnu.mapper.user_t_model_mariadbMapper;
 import edu.imnu.model.user_t_model_mariadb;
 import edu.imnu.model.user_t_model_mariadbExample;
+import org.apache.catalina.mapper.Mapper;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import tk.mybatis.mapper.entity.Example.Criteria;
 
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * Created by r958403448 on 2017/3/27.
@@ -34,13 +36,19 @@ public class usercontroller {
 
         String username = request.getParameter("username");
         String passwd = request.getParameter("passwd");
-        Example example = new Example(user_t_model_mariadbMapper.class);
-        Criteria cri= example.createCriteria();
-        cri.andEqualTo("username", usert.getUserName());
-        userMapper.selectByExample(cri).toString();
+        user_t_model_mariadbExample example = new user_t_model_mariadbExample();
+        user_t_model_mariadbExample.Criteria criteria= example.createCriteria();
+        criteria.andIdIsNotNull();
+        criteria.andUserNameEqualTo(username);
+        List<?> list=userMapper.selectByExample(example);
+//        example.or(criteria);
+//        user_t_model_mariadbExample example = new Example(user_t_model_mariadbMapper.class);
+//        Criteria cri= example.createCriteria();
+//        cri.andEqualTo("username", usert.getUserName());
+//        userMapper.selectByExample(cri).toString();
 
 
-        System.out.println(userMapper.selectByExample(cri).toString());
+//        System.out.println(userMapper.selectByExample(cri).toString());
         return mav;
 
     }
